@@ -8,7 +8,7 @@ class PaginaRegistro extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pantalla principal'),
+        title: const Text('Registro'),
       ),
       body: Center(),
     );

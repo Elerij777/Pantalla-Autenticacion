@@ -26,7 +26,9 @@ class _CustomInputState extends State<CustomInput> {
         prefixIcon: const Icon(Icons.lock),
         suffixIcon: IconButton(
             onPressed: () {
-              // TODO: logica para mostrar u ocultar el pasword
+              setState(() {
+                widget.obscureText = !widget.obscureText;
+              });
             },
             icon: const Icon(Icons.remove_red_eye_rounded)),
         border: const OutlineInputBorder(),
