@@ -7,10 +7,13 @@ class PaginaRegistro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Registro'),
-      ),
-      body: Center(),
-    );
+        appBar: AppBar(
+          title: const Text('Registro'),
+        ),
+        body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [],
+            )));
   }
 }

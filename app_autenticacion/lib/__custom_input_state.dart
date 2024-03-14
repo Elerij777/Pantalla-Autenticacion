@@ -1,20 +1,5 @@
+import 'package:app_autenticacion/textfield_costume.dart';
 import 'package:flutter/material.dart';
-
-class CustomInput extends StatefulWidget {
-  CustomInput({
-    Key? key,
-    required this.controller,
-    this.obscureText = false,
-    this.inputType = TextInputType.text, // Parámetro para el tipo de entrada
-  }) : super(key: key);
-
-  final TextEditingController controller;
-  bool obscureText;
-  final TextInputType inputType; // Nuevo parámetro para el tipo de entrada
-
-  @override
-  State<CustomInput> createState() => _CustomInputState();
-}
 
 class _CustomInputState extends State<CustomInput> {
   late IconData prefixIconData;
