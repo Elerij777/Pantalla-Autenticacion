@@ -1,3 +1,4 @@
+import 'package:app_autenticacion/textfield_costume.dart';
 import 'package:flutter/material.dart';
 
 class PaginaRegistro extends StatelessWidget {
@@ -13,7 +14,44 @@ class PaginaRegistro extends StatelessWidget {
         body: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
-              children: [],
+              children: [
+                const Icon(
+                  Icons.adb,
+                  size: 150,
+                ),
+                CustomInput(
+                  controller: TextEditingController(),
+                  obscureText: false,
+                ),
+                const SizedBox(
+                  height: 10.0,
+                  width: 10.0,
+                ),
+                CustomInput(
+                  controller: TextEditingController(),
+                  obscureText: false,
+                  labelText: 'Apellidos',
+                  prefixIconData: Icons.person,
+                ),
+                const SizedBox(
+                  height: 10.0,
+                  width: 10.0,
+                ),
+                CustomInput(
+                  controller: TextEditingController(),
+                  obscureText: false,
+                  inputType: TextInputType.emailAddress,
+                ),
+                const SizedBox(
+                  height: 10.0,
+                  width: 10.0,
+                ),
+                CustomInput(
+                  controller: TextEditingController(),
+                  obscureText: false,
+                  inputType: TextInputType.visiblePassword,
+                )
+              ],
             )));
   }
 }

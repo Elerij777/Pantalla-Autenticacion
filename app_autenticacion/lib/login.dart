@@ -18,7 +18,7 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               const Icon(
-                Icons.person,
+                Icons.adb,
                 size: 150,
               ),
               CustomInput(
@@ -34,7 +34,13 @@ class LoginPage extends StatelessWidget {
                 controller: TextEditingController(),
                 obscureText: true,
                 inputType: TextInputType.visiblePassword,
-              )
+              ),
+              TextButton(
+                onPressed: () {},
+                child: const Text('Olvide mi contraseña'),
+              ),
+              TextButton(
+                  onPressed: () {}, child: const Text('Confirmar datos')),
             ],
           ),
         ),

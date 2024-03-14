@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:app_autenticacion/router.dart';
 import 'package:app_autenticacion/routes.dart';
+import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
 
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      initialRoute: MyRoutes.Login.name,
+      initialRoute: MyRoutes.Registro.name,
       routes: routes,
       onGenerateRoute: (settings) {
         return MaterialPageRoute(

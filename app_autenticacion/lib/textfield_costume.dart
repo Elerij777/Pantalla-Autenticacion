@@ -1,38 +1,55 @@
 import 'package:flutter/material.dart';
 
 class CustomInput extends StatefulWidget {
-  CustomInput({
-    Key? key,
-    required this.controller,
-    this.obscureText = false,
-    this.inputType = TextInputType.text, // Parámetro para el tipo de entrada
-  }) : super(key: key);
+  CustomInput(
+      {Key? key,
+      required this.controller,
+      this.obscureText = false,
+      this.inputType = TextInputType.text,
+      this.labelText,
+      this.prefixIconData})
+      : super(key: key);
 
+  late IconData? prefixIconData;
+  late String? labelText;
   final TextEditingController controller;
   bool obscureText;
   final TextInputType inputType; // Nuevo parámetro para el tipo de entrada
 
   @override
-  State<CustomInput> createState() => _CustomInputState();
+  State<CustomInput> createState() =>
+      _CustomInputState(prefixIconData: prefixIconData, labelText: labelText);
 }
 
 class _CustomInputState extends State<CustomInput> {
-  late IconData prefixIconData;
-  late String labelText;
+  _CustomInputState({
+    this.labelText,
+    this.prefixIconData,
+  });
+  late IconData? prefixIconData;
+  late String? labelText;
 
   @override
   void initState() {
     super.initState();
     // Configuración inicial del icono y el texto de acuerdo con el tipo de entrada
-    if (widget.inputType == TextInputType.visiblePassword) {
-      prefixIconData = Icons.lock;
-      labelText = 'Contraseña';
-    } else if (widget.inputType == TextInputType.emailAddress) {
-      prefixIconData = Icons.email;
-      labelText = 'Correo';
-    } else {
-      prefixIconData = Icons.person;
-      labelText = 'Nombre';
+    if (prefixIconData == null) {
+      if (widget.inputType == TextInputType.visiblePassword) {
+        prefixIconData = Icons.lock;
+      } else if (widget.inputType == TextInputType.emailAddress) {
+        prefixIconData = Icons.email;
+      } else {
+        prefixIconData = Icons.person;
+      }
+    }
+    if (labelText == null) {
+      if (widget.inputType == TextInputType.visiblePassword) {
+        labelText = 'Contraseña';
+      } else if (widget.inputType == TextInputType.emailAddress) {
+        labelText = 'Correo';
+      } else {
+        labelText = 'Nombre';
+      }
     }
   }
 
