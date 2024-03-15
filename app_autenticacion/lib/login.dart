@@ -19,17 +19,29 @@
     Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Login'),
+          title: const Text('Login', style: TextStyle(
+            fontSize: 45, 
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Roboto',)),
+
+          centerTitle: true,
+           toolbarHeight: 80,
         ),
         body: Center(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                const SizedBox(
+                  height: 30.0,
+                ),
                 const Icon(
                   Icons.adb,
                   size: 150,
+                ),
+                const SizedBox(
+                  height: 20.0,
                 ),
                 CustomInput(
                   controller: _emailController,
@@ -39,7 +51,7 @@
                   prefixIconData: Icons.email,
                 ),
                 const SizedBox(
-                  height: 10.0,
+                  height: 20.0,
                 ),
                 CustomInput(
                   controller: _passwordController,
@@ -49,7 +61,7 @@
                   prefixIconData: Icons.lock,
                 ),
                 const SizedBox(
-                  height: 10.0,
+                  height: 25.0,
                 ),
                 TextButton(
                   onPressed: () {
@@ -62,6 +74,9 @@
                     _errorMessage,
                     style: TextStyle(color: Colors.red),
                   ),
+                  const SizedBox(
+                  height: 12.0,
+                ),
                   TextButton(
                    onPressed: () {
                    Navigator.pushNamed(context, MyRoutes.Registro.name);

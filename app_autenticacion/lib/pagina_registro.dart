@@ -136,7 +136,5 @@ void _registrarUsuario() {
   print('Teléfono: $telefono');
   print('Contraseña: $contrasena');
   print('Confirmar Contraseña: $confirmarContrasena');
-
-       
   }
 }
