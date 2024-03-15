@@ -20,16 +20,19 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Registro'),
+          title: const Text('Registro', style: TextStyle(
+            fontSize: 45, 
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Roboto',)),
+          centerTitle: true,
+           toolbarHeight: 80,
         ),
-        body: Padding(
+        body: 
+        SingleChildScrollView(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                const Icon(
-                  Icons.adb,
-                  size: 150,
-                ),
+                Image.asset("assets/cat2.gif", width: 300, height: 200,),
                 CustomInput(
               controller: _nombreController,
               obscureText: false,
@@ -79,13 +82,13 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
               prefixIconData: Icons.lock,
             ),
             const SizedBox(
-              height: 20.0,
+              height: 25.0,
             ),
 ElevatedButton(
               onPressed: () {
                 _registrarUsuario();
               },
-              child: const Text('Registrarse'),
+              child: const Text('Registrarse', style: TextStyle(fontSize: 20),),
             ),
             if (_errorMessage.isNotEmpty)
               Text(

@@ -27,22 +27,14 @@
           centerTitle: true,
            toolbarHeight: 80,
         ),
-        body: Center(
+        body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 30.0,
-                ),
-                const Icon(
-                  Icons.adb,
-                  size: 150,
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
+                Image.asset("assets/cat.gif", width: 300, height: 250,),
+                
                 CustomInput(
                   controller: _emailController,
                   obscureText: false,
@@ -67,7 +59,7 @@
                   onPressed: () {
                     _loginCredenciales();
                   },
-                  child: const Text('Confirmar datos'),
+                  child: const Text('Confirmar datos', style: TextStyle(fontSize: 16),),
                 ),
                 if (_errorMessage.isNotEmpty)
                   Text(
@@ -81,14 +73,16 @@
                    onPressed: () {
                    Navigator.pushNamed(context, MyRoutes.Registro.name);
                  },
-                child: const Text('Registrarse'),
+                child: const Text('Registrarse', style: TextStyle(
+                  fontSize: 16.0,
+                )),
                 ),
 
               ],
             ),
           ),
         ),
-      );
+        );
     }
 
     void _loginCredenciales() {
