@@ -5,50 +5,56 @@ class PaginaRegistro extends StatefulWidget {
   const PaginaRegistro({Key? key}) : super(key: key);
 
   @override
-_PaginaRegistroState createState() => _PaginaRegistroState();
+  _PaginaRegistroState createState() => _PaginaRegistroState();
 }
+
 class _PaginaRegistroState extends State<PaginaRegistro> {
   TextEditingController _nombreController = TextEditingController();
   TextEditingController _correoController = TextEditingController();
   TextEditingController _telefonoController = TextEditingController();
   TextEditingController _contrasenaController = TextEditingController();
-  TextEditingController _confirmarContrasenaController = TextEditingController();
+  TextEditingController _confirmarContrasenaController =
+      TextEditingController();
   String _errorMessage = '';
 
-
-@override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Registro', style: TextStyle(
-            fontSize: 45, 
-            fontWeight: FontWeight.bold,
-            fontFamily: 'Roboto',)),
+          title: const Text('Registro',
+              style: TextStyle(
+                fontSize: 45,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Roboto',
+              )),
           centerTitle: true,
-           toolbarHeight: 80,
+          toolbarHeight: 80,
         ),
-        body: 
-        SingleChildScrollView(
+        body: SingleChildScrollView(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Image.asset("assets/cat2.gif", width: 300, height: 200,),
+                Image.asset(
+                  "assets/cat2.gif",
+                  width: 300,
+                  height: 200,
+                ),
                 CustomInput(
-              controller: _nombreController,
-              obscureText: false,
-              labelText: 'Nombre',
-              prefixIconData: Icons.person,
-            ),
+                  controller: _nombreController,
+                  obscureText: false,
+                  labelText: 'Nombre',
+                  prefixIconData: Icons.person,
+                ),
                 const SizedBox(
                   height: 10.0,
                   width: 10.0,
                 ),
                 CustomInput(
-              controller: _correoController,
-              obscureText: false,
-              inputType: TextInputType.emailAddress,
-              labelText: 'Correo',
-              prefixIconData: Icons.email,
+                  controller: _correoController,
+                  obscureText: false,
+                  inputType: TextInputType.emailAddress,
+                  labelText: 'Correo',
+                  prefixIconData: Icons.email,
                 ),
                 const SizedBox(
                   height: 10.0,
@@ -56,10 +62,10 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                 ),
                 CustomInput(
                   controller: _telefonoController,
-              obscureText: false,
-              inputType: TextInputType.phone,
-              labelText: 'Teléfono',
-              prefixIconData: Icons.phone,
+                  obscureText: false,
+                  inputType: TextInputType.phone,
+                  labelText: 'Teléfono',
+                  prefixIconData: Icons.phone,
                 ),
                 const SizedBox(
                   height: 10.0,
@@ -67,46 +73,54 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                 ),
                 CustomInput(
                   controller: _contrasenaController,
-              obscureText: true,
-              labelText: 'Contraseña',
-              prefixIconData: Icons.lock,
+                  obscureText: true,
+                  labelText: 'Contraseña',
+                  prefixIconData: Icons.lock,
+                  inputType: TextInputType.visiblePassword,
                 ),
-               const SizedBox(
+                const SizedBox(
                   height: 10.0,
                   width: 10.0,
                 ),
                 CustomInput(
-              controller: _confirmarContrasenaController,
-              obscureText: true,
-              labelText: 'Confirmar Contraseña',
-              prefixIconData: Icons.lock,
-            ),
-            const SizedBox(
-              height: 25.0,
-            ),
-ElevatedButton(
-              onPressed: () {
-                _registrarUsuario();
-              },
-              child: const Text('Registrarse', style: TextStyle(fontSize: 20),),
-            ),
-            if (_errorMessage.isNotEmpty)
-              Text(
-                _errorMessage,
-                style: TextStyle(color: Colors.red),
-              ),
+                  controller: _confirmarContrasenaController,
+                  obscureText: true,
+                  labelText: 'Confirmar Contraseña',
+                  prefixIconData: Icons.lock,
+                  inputType: TextInputType.visiblePassword,
+                ),
+                const SizedBox(
+                  height: 25.0,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    _registrarUsuario();
+                  },
+                  child: const Text(
+                    'Registrarse',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+                if (_errorMessage.isNotEmpty)
+                  Text(
+                    _errorMessage,
+                    style: TextStyle(color: Colors.red),
+                  ),
               ],
-            )
-            )
-            ); 
-  }   
-void _registrarUsuario() {
+            )));
+  }
+
+  void _registrarUsuario() {
     String nombre = _nombreController.text.trim();
     String correo = _correoController.text.trim();
     String telefono = _telefonoController.text.trim();
     String contrasena = _contrasenaController.text;
     String confirmarContrasena = _confirmarContrasenaController.text;
-    if (nombre.isEmpty || correo.isEmpty || telefono.isEmpty || contrasena.isEmpty || confirmarContrasena.isEmpty) {
+    if (nombre.isEmpty ||
+        correo.isEmpty ||
+        telefono.isEmpty ||
+        contrasena.isEmpty ||
+        confirmarContrasena.isEmpty) {
       setState(() {
         _errorMessage = 'Por favor, completa todos los campos';
       });
@@ -120,13 +134,15 @@ void _registrarUsuario() {
     }
     if (!correo.endsWith('@gmail.com')) {
       setState(() {
-        _errorMessage = 'El correo electrónico debe tener la terminación "@gmail.com"';
+        _errorMessage =
+            'El correo electrónico debe tener la terminación "@gmail.com"';
       });
       return;
     }
     if (contrasena != confirmarContrasena) {
       setState(() {
-        _errorMessage = 'La contraseña y la confirmación de la contraseña no coinciden';
+        _errorMessage =
+            'La contraseña y la confirmación de la contraseña no coinciden';
       });
       return;
     }
@@ -134,10 +150,10 @@ void _registrarUsuario() {
       _errorMessage = '';
     });
 
-  print('Nombre: $nombre');
-  print('Correo: $correo');
-  print('Teléfono: $telefono');
-  print('Contraseña: $contrasena');
-  print('Confirmar Contraseña: $confirmarContrasena');
+    print('Nombre: $nombre');
+    print('Correo: $correo');
+    print('Teléfono: $telefono');
+    print('Contraseña: $contrasena');
+    print('Confirmar Contraseña: $confirmarContrasena');
   }
 }
