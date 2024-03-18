@@ -101,39 +101,182 @@ class _HomePageState extends State<HomePage> {
     String usuario = widget.userEmail;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bienvenido, $usuario'),
+        title: Text(
+      'Juegos UNAH\n Bienvenido $usuario', textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: 24, 
+        fontWeight: FontWeight.bold,)
+    ),
+    centerTitle: true,
+    toolbarHeight: 90,
       ),
-      body: GridView.builder(
-        padding: EdgeInsets.all(16),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4,
-          mainAxisSpacing: 8,
-          crossAxisSpacing: 8,
-        ),
-        itemCount: 16,
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () => _alTocarCarta(index),
-            child: Container(
-              color: _cartasVolteadas[index]
-                  ? Color.fromARGB(255, 207, 199, 162)
-                  : Color.fromRGBO(207, 184, 213, 1),
-              child: Center(
-                child: _cartasVolteadas[index]
-                    ? Text(
-                        numeroCarta[index].toString(),
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )
-                    : Icon(Icons.flip_camera_android),
+
+
+body: ListView(
+  children: [
+    Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        GridView.builder(
+          shrinkWrap: true,
+          padding: EdgeInsets.all(16),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4,
+            mainAxisSpacing: 8,
+            crossAxisSpacing: 8,
+          ),
+          itemCount: 16,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () => _alTocarCarta(index),
+              child: Container(
+                color: _cartasVolteadas[index]
+                    ? Color.fromARGB(255, 207, 199, 162)
+                    : Color.fromRGBO(207, 184, 213, 1),
+                child: Center(
+                  child: _cartasVolteadas[index]
+                      ? Text(
+                          numeroCarta[index].toString(),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      : Icon(Icons.flip_camera_android),
+                ),
               ),
+            );
+          },
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          child: Text(
+            'Mas Juegos Relacionados',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
-          );
-        },
-      ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  // Juego 1
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Image.asset('assets/mario.jpg', width: 100, height: 100,),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Super Mario 64',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              SizedBox(height: 8), 
+                            ],
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                          },
+                          child: Text('Jugar'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  // Juego 2
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Image.asset('assets/gof.jpg', width: 100, height: 100,),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'God of War',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              SizedBox(height: 8), 
+                            ],
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                          
+                          },
+                          child: Text('Jugar'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  // Juego 3
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Image.asset('assets/bla.jpg', width: 100, height: 100),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Blasphemouss',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              SizedBox(height: 8), 
+                            ],
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                           
+                          },
+                          child: Text('Jugar'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  ],
+),
     );
   }
 }
