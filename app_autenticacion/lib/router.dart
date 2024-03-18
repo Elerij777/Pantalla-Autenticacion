@@ -5,7 +5,7 @@ import 'package:app_autenticacion/pantalla_principal.dart';
 import 'package:app_autenticacion/login.dart';
 
 final Map<String, Widget Function(BuildContext)> routes = {
-  MyRoutes.Home.name: (context) => const HomePage(),
+  MyRoutes.Home.name: (context) => const HomePage(userEmail: '',),
   MyRoutes.Login.name: (context) => const LoginPage(),
   MyRoutes.Registro.name: (context) => const PaginaRegistro(),
 };

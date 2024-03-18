@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final String userEmail;
+  const HomePage({Key? key, required this.userEmail}) : super(key: key);
+
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -79,7 +81,7 @@ class _HomePageState extends State<HomePage> {
         return AlertDialog(
           title: Text('¡Felicidades!'),
           content:
-              Text('Has encontrado todos las oarejas en $intentos intentos.'),
+              Text('Has encontrado todos las parejas en $intentos intentos.'),
           actions: <Widget>[
             TextButton(
               onPressed: () {
@@ -96,9 +98,10 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    String usuario = widget.userEmail;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Juego de memoria'),
+        title: Text('Bienvenido, $usuario'),
       ),
       body: GridView.builder(
         padding: EdgeInsets.all(16),

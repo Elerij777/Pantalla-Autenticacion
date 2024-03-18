@@ -1,6 +1,7 @@
   import 'package:app_autenticacion/textfield_costume.dart';
   import 'package:flutter/material.dart';
   import 'package:app_autenticacion/routes.dart';
+  import "package:app_autenticacion/pantalla_principal.dart";
 
 
   class LoginPage extends StatefulWidget {
@@ -86,6 +87,7 @@
     }
 
     void _loginCredenciales() {
+     
       String enteredEmail = _emailController.text.trim();
       String enteredPassword = _passwordController.text.trim();
 
@@ -98,8 +100,20 @@
       if (validCredentials.containsKey(enteredEmail) &&
           validCredentials[enteredEmail] == enteredPassword) {
         
+        //Identificar al usuario
+   String welcomeMessage = 'Bienvenido $enteredEmail';
+
+    // Mostrar mensaje de bienvenida
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(welcomeMessage)),
+    );
         //Resultado si las credenciales son correctas
-        Navigator.pushReplacementNamed(context, MyRoutes.Home.name);
+        Navigator.pushReplacement(
+  context,
+  MaterialPageRoute(
+    builder: (context) => HomePage(userEmail: enteredEmail),
+  ),
+);
       } else {
         //Resultado si no son correctas
         setState(() {
